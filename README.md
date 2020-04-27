@@ -63,7 +63,7 @@ sh -c "\$(curl -fsSL https://raw.githubusercontent.com/AlexQ333/Notes_App/master
 
 ### Gems used
 
-Terminal utilizes the following gems. All of these gems are stored in the Gemfile.
+Terminal notes utilizes the following gems. All of these gems are stored in the Gemfile.
 
 [colorize](https://rdoc.info/github/fazibear/colorize) 
 
