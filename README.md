@@ -38,10 +38,10 @@ The user experience outline after loading up the app will be :
 - The Notes will be character limited to force concise language and readability. If notes are too long, a notice will pop up when user try to save the note
 
 ## Control flow diagram
-![Image](./docs/control_flow.jpg)
+![Image](./docs/control_flow.JPG)
 
 ## Implementation plan
-![Trello](./docs/Trello.jpg)
+![Trello](./docs/Trello.JPG)
 [Trello](https://trello.com/b/MtACGzWI/notesapp)
 
 ## Installation
