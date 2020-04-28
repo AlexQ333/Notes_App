@@ -1,7 +1,7 @@
 require "tty-prompt"
 require "tty-file"
 
-#
+
 class StartMenu 
     def initialize
         @start_prompt = TTY::Prompt.new
