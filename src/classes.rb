@@ -23,7 +23,7 @@ class Noteboard
     #Creates a file for new noteboard
     def initialize(file_name)
         
-        @file = TTY::File.create_file "#{file_name}.csv", "Title, Content"
+        @file = TTY::File.create_file "#{file_name}.csv"
     end
     
     #Finds any existing noteboard files and displays a selection menu
@@ -39,11 +39,21 @@ class Noteboard
     end
     
     # Reads and displays CSV fil data into a table
-    def display_noteboard
-        # puts "hello"
-        file= CSV.open(@file, "a+")
-        file.readlines.map
+    def noteboard_add(note)
+        file = CSV.open(@file, "a+") do |csv|
+            csv << [note]
+            
+        end
 
+    end
+
+    def display_noteboard(file)
+        
+        puts file_data = File.read(file)
+         
+            
+
+        # display = TTY::Table[['a1', 'a2'], ['b1', 'b2']]
 
     end
 
@@ -57,23 +67,36 @@ end
 def new_file
     puts "Enter a name for this new noteboard."
     file_name = gets.chomp
-    # Noteboard.new(file_name)
+    
 
 end
 
-# new_file
-note = Noteboard.new(new_file)
+def add_note
+    puts "Enter your note: "
+    note = gets.chomp
+
+end
+
+
+#Control flow
+
+noteboard = Noteboard.new(new_file)
+
+noteboard.noteboard_add(add_note)
+
 puts "good"
-note.display_noteboard
+noteboard.display_noteboard
+puts "good too"
+
+
+
 
 # def load_file
 #     file = 
 
 # end
 
-#     def add_note
 
-#     end
 
 #     def delete_note
 
