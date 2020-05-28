@@ -32,13 +32,12 @@ class Noteboard
     def noteboard_add(note)
         file = CSV.open(@file, "a+") do |csv|
             csv << [note]
-            
-            
         end
 
     end
 
-    def noteboard_delete
+    def noteboard_delete(line_number)
+        
 
     end
 
@@ -64,6 +63,7 @@ def noteboard_menu
         for file in @file_arr do
         menu.choice "#{file}", -> {Noteboard.display_noteboard(file)}
         end
+        menu.choice "Delete a noteboard"
         menu.choice "Back", -> {StartMenu.new}
     end
 end
@@ -73,8 +73,14 @@ def new_noteboard
     puts "Enter a name for this new noteboard."
     file_name = gets.chomp
     
-
 end
+
+def delete_noteboard
+    puts "Enter name of noteboard to be deleted:"
+    delete_file = gets.chomp
+    TTY::File.remove_file "#{delete_file}.csv"
+end
+
 
 def add_note
     puts "Enter your note: "
@@ -83,6 +89,9 @@ def add_note
 end
 
 def delete_note
+    puts "Which Line do you want to delete (Enter Line number):"
+    # error handling here, numbers only
+    line_number = get.chomp.to_i
 
 end
 
@@ -99,7 +108,7 @@ end
 
 #Control flow
 
-noteboard = Noteboard.new(new_file)
+noteboard = Noteboard.new(new_noteboard)
 
 noteboard.noteboard_add(add_note)
 
