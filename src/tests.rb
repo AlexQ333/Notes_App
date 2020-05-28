@@ -1,10 +1,23 @@
 require "test/unit"
-require_relative "notes.rb"
+require "csv"
+require_relative "classes.rb"
+
+
+
+class NoteboardTest < Test::Unit::TestCase
+    # Testing that all generated CSV files have the right headers
+    def test_header
+        myfile = Noteboard.New
+        assert_equal([Title, Content], myfile.read)
+
+    end
+
+end
 
 # Tests for adding new notes
 class NewNotesTest < Test::Unit::TestCase
     def test_add_note
-        assert_equal("asdfasdf", add_note("asdfasdf"))
+        assert_equal("asdfasdf", add_note(["note1", "asdfasdf"]))
 
     end
     # Testing whether the application disallows notes over 200 characters

@@ -1,7 +1,9 @@
 require "tty-prompt"
 require "tty-file"
+require "tty-table"
+require "csv"
 
-
+# Display a start menu to user
 class StartMenu 
     def initialize
         @start_prompt = TTY::Prompt.new
@@ -19,8 +21,11 @@ class Noteboard
     #Creates a file for new noteboard
     def initialize
         puts "Enter a name for this new noteboard."
-        @file_name = gets.chomp
-        TTY::File.create_file "#{@file_name}.csv", "#{@file_name}"
+        file_name = gets.chomp
+        @file = TTY::File.create_file "#{file_name}.csv", "#{file_name}"
+        
+        
+        display_noteboard
     end
     
     #Finds any existing noteboard files and displays a selection menu
@@ -28,33 +33,35 @@ class Noteboard
         @file_arr = Dir.glob("*csv")
         @file_menu = TTY::Prompt.new
         @file_menu.select("Select an existing noteboard") do |menu|
-            for file in @file_arr
-            menu.choice "#{file}", -> {File.open("#{file}", "w+")}
+            for file in @file_arr do
+            menu.choice "#{file}", -> {display_noteboard}
             end
             menu.choice "Back", -> {StartMenu.new}
         end
     end
 
-    def alphabetical_sort
-
+    def display_noteboard
+        CSV.read(@file)
     end
+
+    # def alphabetical_sort
+
+    # end
 end
 
-class Notes < Noteboard
-    def add_note
+# class Notes < Noteboard
+#     def add_note
 
-    end
+#     end
 
-    def delete_note
+#     def delete_note
 
-    end
+#     end
 
-    def colour_code
-
-
-    end
+#     def colour_code
 
 
+#     end
 
-end
+# end
 
