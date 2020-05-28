@@ -17,8 +17,6 @@ class StartMenu
 end
 
 
-
-
 class Noteboard
     #Creates a file for new noteboard
     def initialize(file_name)
@@ -40,6 +38,10 @@ class Noteboard
     # Deletes a line of notes from current noteboard
     def noteboard_delete(line_number)
         
+
+    end
+
+    def noteboard_replace
 
     end
 
@@ -99,6 +101,11 @@ def delete_note
 
 end
 
+
+def replace_note
+
+end
+
 # Options menu that methods should loop back into
 def options_menu
     @start_prompt = TTY::Prompt.new
@@ -122,17 +129,3 @@ noteboard.noteboard_add(add_note)
 options_menu
 
 
-
-
-
-
-
-
-
-#     def delete_note
-
-#     end
-
-# def alphabetical_sort
-
-# end
