@@ -108,14 +108,15 @@ Terminal notes utilizes the following gems. All of these gems are stored in the 
 
 ## Manual testing
 
-| Feature | Description |Expected Outcome | Actual Outcome| Is it a problem? |
+| Feature | Description | Expected Outcome | Actual Outcome | Sidenote |
+| ------ | ------ | ------- | ------- | ------ |
+| Start menu | An ascii art title with menu | When the application is ran, ascii art title should appear as well as menu | As expected | None 
+| Create new noteboard | Start menu has a "New noteboard" option |W hen the option is selected, a new file is created within the directory | As expected | None 
+| Load new noteboard | Start menu has a "Load existing noteboard" option | When the option is selected, existing files appears as options | As expected | None 
+| Delete noteboard file | Within "Load existing noteboard" menu, there's a delete option | When the option is selected, program asks user for name of file to be deleted and executes | As expected | None  
+| Add note | Making sure add_note function inserted data into CSV | New data is CSV | As expected | None 
 
-|--|--|--|--|--|
 
-| Start menu | An ascii art title with menu |When the application is ran, ascii art title should appear as well as menu| As expected| No |
 
-| Create new noteboard |Start menu has a "New noteboard" option |When the option is selected, a new file is created within the directory| As expected| No |
 
-| Load new noteboard|Start menu has a "Load existing noteboard" option |When the option is selected, existing files appears as options| As expected| No |
 
-| Add note |Making sure add_note function inserted data into CSV |New data is CSV| As expected | No |
