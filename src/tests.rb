@@ -3,17 +3,6 @@ require "csv"
 require_relative "classes.rb"
 
 
-
-class NoteboardTest < Test::Unit::TestCase
-    # Testing that all generated CSV files have the right headers
-    def test_header
-        myfile = Noteboard.New
-        assert_equal([Title, Content], myfile.read)
-
-    end
-
-end
-
 # Tests for adding new notes
 class NewNotesTest < Test::Unit::TestCase
     def test_add_note
