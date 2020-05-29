@@ -1,3 +1,4 @@
+require_relative "help.rb"
 require "tty-prompt"
 require "tty-file"
 require "tty-table"
@@ -11,7 +12,8 @@ class StartMenu
         @start_prompt.select("Create new noteboard or load existing one?") do |menu|
             menu.choice "New noteboard", -> {Noteboard.new(new_noteboard)}
             menu.choice "Load existing noteboard", -> {noteboard_menu}
-            menu.choice "Exit", -> {system "clear"}
+            menu.choice "Help", -> {help_info}
+            menu.choice "Exit", -> {system "exit"}
         end
     end  
     
@@ -23,7 +25,7 @@ def noteboard_menu
     @file_menu = TTY::Prompt.new
     @file_menu.select("Select an existing noteboard") do |menu|
         for file in @file_arr do
-        menu.choice "#{file}", -> {Noteboard.display_noteboard(file)}
+        menu.choice "#{file}", -> {file.display_noteboard(file)}
         end
         menu.choice "Delete a noteboard", -> {delete_noteboard}
         menu.choice "Back", -> {StartMenu.new}
@@ -59,9 +61,9 @@ class Noteboard
     end
 
     # Displays all notes to user
-    def display_noteboard(file)
+    def display_noteboard(noteboard)
         puts "Your notes are"
-        puts file_data = File.read(file)
+        puts file_data = File.read(noteboard)
 
         # display = TTY::Table[['a1', 'a2'], ['b1', 'b2']]
 
@@ -108,17 +110,20 @@ def replace_note
 end
 
 # Options menu that methods should loop back into
-def options_menu
+def options_menu(noteboard)
     @start_prompt = TTY::Prompt.new
-        @start_prompt.select("What do you want to do now") do |menu|
-            menu.choice "Show my notes", -> {Noteboard.display_noteboard}
+        @start_prompt.select("What do you want to do now?") do |menu|
+            menu.choice "Show my notes", -> {Noteboard.display_noteboard(noteboard)}
             menu.choice "Add new note", -> {Noteboard.noteboard_add(add_note)}
             menu.choice "Delete note", -> {Noteboard.noteboard_delete(delete_note)}
             menu.choice "Back", -> {StartMenu.new}
         end
 end
 
-
-
+#control flow
+# noteboard = Noteboard.new(new_noteboard)
+# noteboard.noteboard_add(add_note)
+# noteboard.display_noteboard(file)
+# options_menu(noteboard)
 
 
