@@ -25,7 +25,7 @@ def noteboard_menu
     @file_menu = TTY::Prompt.new
     @file_menu.select("Select an existing noteboard") do |menu|
         for file in @file_arr do
-        menu.choice "#{file}", -> {file.display_noteboard(file)}
+        menu.choice "#{file}", -> {Noteboard.display_noteboard(file)}
         end
         menu.choice "Delete a noteboard", -> {delete_noteboard}
         menu.choice "Back", -> {StartMenu.new}
@@ -61,9 +61,9 @@ class Noteboard
     end
 
     # Displays all notes to user
-    def display_noteboard(noteboard)
-        puts "Your notes are"
-        puts file_data = File.read(noteboard)
+    def self.display_noteboard(file)
+        puts "Your notes are:"
+        puts file_data = File.read(file)
 
         # display = TTY::Table[['a1', 'a2'], ['b1', 'b2']]
 
