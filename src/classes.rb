@@ -116,7 +116,7 @@ def options_menu(noteboard)
         @start_prompt.select("What do you want to do now?") do |menu|
             menu.choice "Load existing noteboards", -> {noteboard_menu}
             menu.choice "Add new note", -> {Noteboard.noteboard_add(add_note)}
-            menu.choice "Delete/edit note", -> {Noteboard.noteboard_edit(edit_note)}
+            menu.choice "Delete note", -> {Noteboard.noteboard_delete(delete_note)}
             menu.choice "Back", -> {StartMenu.new}
         end
 end

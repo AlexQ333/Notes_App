@@ -2,7 +2,9 @@ echo "Welcome to **TERMINAL NOTES**"
 
 echo "Lets begin the install now"
 
-cd ../..
+cd ..
+
+cd ..
 
 git clone "https://github.com/AlexQ6/Notes_app.git"
 
