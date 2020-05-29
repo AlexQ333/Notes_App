@@ -1,9 +1,11 @@
 require_relative "classes.rb"
+require_relative "help.rb"
 require "artii"
 require "tty-prompt"
 require "tty-file"
 require "tty-table"
 require "colorize"
+
 
 args = ARGV
 if args[0].downcase == "new"
@@ -13,7 +15,13 @@ if args[0].downcase == "new"
 elsif args[0].downcase == "display"
     noteboard_menu
 
+elsif args[0].downcase == "h"
+    help_info
+
 end
+
+
+
 
 title = Artii::Base.new
 puts title.asciify("Terminal Notes").colorize(:light_blue)
@@ -22,13 +30,14 @@ puts title.asciify("Terminal Notes").colorize(:light_blue)
 
 StartMenu.new
 
-# noteboard = Noteboard.new(new_noteboard)
+noteboard = Noteboard.new(new_noteboard)
 
-# noteboard.noteboard_add(add_note)
+noteboard.noteboard_add(add_note)
 
-# # noteboard.display_noteboard(file)
+noteboard.display_noteboard(file)
 
-# options_menu
+options_menu(noteboard)
+
 
 
 
