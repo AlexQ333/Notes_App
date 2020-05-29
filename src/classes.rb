@@ -3,12 +3,13 @@ require "tty-file"
 require "tty-table"
 require "csv"
 
+
 # Display a start menu to user
 class StartMenu 
     def initialize
         @start_prompt = TTY::Prompt.new
         @start_prompt.select("Create new noteboard or load existing one?") do |menu|
-            menu.choice "New noteboard", -> {new_noteboard}
+            menu.choice "New noteboard", -> {Noteboard.new(new_noteboard)}
             menu.choice "Load existing noteboard", -> {noteboard_menu}
             menu.choice "Exit", -> {system "clear"}
         end
@@ -16,6 +17,18 @@ class StartMenu
     
 end
 
+#Finds any existing noteboard files and displays a selection menu
+def noteboard_menu
+    @file_arr = Dir.glob("*csv")
+    @file_menu = TTY::Prompt.new
+    @file_menu.select("Select an existing noteboard") do |menu|
+        for file in @file_arr do
+        menu.choice "#{file}", -> {Noteboard.display_noteboard(file)}
+        end
+        menu.choice "Delete a noteboard", -> {delete_noteboard}
+        menu.choice "Back", -> {StartMenu.new}
+    end
+end
 
 class Noteboard
     #Creates a file for new noteboard
@@ -31,7 +44,7 @@ class Noteboard
         file = CSV.open(@file, "a+") do |csv|
             csv << [note]
         end
-        file
+        
 
     end
 
@@ -74,18 +87,7 @@ def delete_noteboard
     TTY::File.remove_file "#{delete_file}.csv"
 end
 
-#Finds any existing noteboard files and displays a selection menu
-def noteboard_menu
-    @file_arr = Dir.glob("*csv")
-    @file_menu = TTY::Prompt.new
-    @file_menu.select("Select an existing noteboard") do |menu|
-        for file in @file_arr do
-        menu.choice "#{file}", -> {Noteboard.display_noteboard(file)}
-        end
-        menu.choice "Delete a noteboard", -> {delete_noteboard}
-        menu.choice "Back", -> {StartMenu.new}
-    end
-end
+
 
 # Asks user for note to be added
 def add_note
@@ -118,14 +120,6 @@ def options_menu
 end
 
 
-#Control flow
 
-noteboard = Noteboard.new(new_noteboard)
-
-noteboard.noteboard_add(add_note)
-
-# noteboard.display_noteboard(file)
-
-options_menu
 
 
