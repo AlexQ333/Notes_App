@@ -6,7 +6,7 @@ require_relative "classes.rb"
 # Tests for adding new notes
 class NewNotesTest < Test::Unit::TestCase
     def test_add_note
-        assert_equal("asdfasdf", add_note(["note1", "asdfasdf"]))
+        assert_equal("note1", Noteboard.noteboard_add(add_note("note1")))
 
     end
     # Testing whether the application disallows notes over 200 characters
