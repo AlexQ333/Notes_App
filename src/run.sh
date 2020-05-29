@@ -2,11 +2,15 @@ echo "Welcome to **TERMINAL NOTES**"
 
 echo "Lets begin the install now"
 
+cd ../..
+
 git clone "https://github.com/AlexQ6/Notes_app.git"
 
-cd src
+cd Notes_app/src
+
 
 echo "All required gems are being installed right now"
+gem install bundler
 
 bundle install
 
