@@ -6,12 +6,11 @@ require "tty-table"
 require "colorize"
 
 args = ARGV
-if args[0] == "new"
-    # $prompt.keypress("Press enter to add a new note", keys: [:return])
+if args[0].downcase == "new"
     noteboard = Noteboard.new(new_noteboard)
     noteboard.noteboard_add(add_note)
 
-elsif args[0] == "display"
+elsif args[0].downcase == "display"
     noteboard_menu
 
 end
