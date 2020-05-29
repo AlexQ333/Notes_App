@@ -38,7 +38,7 @@ The user experience outline after loading up the app will be :
 
 - A menu that lists existing saved notes board, create new notes board and help page. Creating a new board will write a new file to computer. Where as selecting a existing board will lead the application reading a notes file from the directory.
 
-- Be presented with the notes board where all notes will reside. It will be displayed like a table format and user can create and assign colours to individual notes. These colour labels can be used for easy identification. The noteboard files will be lightweight CSV files.
+- Be presented with the noteboard where all notes will reside. It will be displayed like a table format and user can create and assign colours to individual notes. These colour labels can be used for easy identification. The noteboard files will be lightweight CSV files.
 
 
 - Menu options will be presented at the bottom with the ability to add, delete and sort notes. When adding notes is selected, a new page will appear with space to write a note, title and choose colour. Options to save and discard will be at the top. When delete option is selected, the user enters the title of note they want to delete. Sorting notes can be done by the title alphabetically or by colour.
@@ -115,6 +115,8 @@ Terminal notes utilizes the following gems. All of these gems are stored in the 
 | Load new noteboard | Start menu has a "Load existing noteboard" option | When the option is selected, existing files appears as options | As expected | None 
 | Delete noteboard file | Within "Load existing noteboard" menu, there's a delete option | When the option is selected, program asks user for name of file to be deleted and executes | As expected | None  
 | Add note | Making sure add_note function inserted data into CSV | New data is CSV | As expected | None 
+| ARGV terminal arguments | The arguments ran with main.rb launches help file and other app features | Option for new noteboard opens, existing noteboard appear in menu, help file opens | As expected | None 
+
 
 
 
