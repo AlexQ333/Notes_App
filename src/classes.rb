@@ -71,12 +71,12 @@ class Noteboard
 end
 
 
-#functions
+# User interaction functions
 
 # Asks user for new noteboard name
 def new_noteboard
     puts "Enter a name for this new noteboard."
-    file_name = gets.chomp
+    file_name = $stdin.gets.chomp
     
 end
 
@@ -88,11 +88,10 @@ def delete_noteboard
 end
 
 
-
 # Asks user for note to be added
 def add_note
     puts "Enter your note: "
-    note = gets.chomp
+    note = $stdin.gets.chomp
 
 end
 

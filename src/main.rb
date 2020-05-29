@@ -10,7 +10,7 @@ if args[0] == "new"
     # $prompt.keypress("Press enter to add a new note", keys: [:return])
     noteboard = Noteboard.new(new_noteboard)
     noteboard.noteboard_add(add_note)
-    
+
 elsif args[0] == "display"
     noteboard_menu
 
