@@ -10,7 +10,7 @@ class StartMenu
     def initialize
         @start_prompt = TTY::Prompt.new
         @start_prompt.select("Create new noteboard or load existing one?") do |menu|
-            menu.choice "New noteboard", -> {Noteboard.new(new_noteboard)}
+            menu.choice "New noteboard", -> {Noteboard.new(new_board_name)}
             menu.choice "Load existing noteboard", -> {noteboard_menu}
             menu.choice "Help", -> {help_info}
             menu.choice "Exit", -> {system "exit"}
@@ -43,6 +43,7 @@ class Noteboard
     
     # Adds note into current notebaord
     def noteboard_add(note)
+        assign_number = 1
         file = CSV.open(@file, "a+") do |csv|
             csv << [note]
         end
@@ -56,7 +57,7 @@ class Noteboard
 
     end
 
-    def noteboard_replace
+    def noteboard_edit
 
     end
 
@@ -76,7 +77,7 @@ end
 # User interaction functions
 
 # Asks user for new noteboard name
-def new_noteboard
+def new_board_name
     puts "Enter a name for this new noteboard."
     file_name = $stdin.gets.chomp
     
@@ -105,7 +106,7 @@ def delete_note
 end
 
 
-def replace_note
+def edit_note
 
 end
 
@@ -113,17 +114,17 @@ end
 def options_menu(noteboard)
     @start_prompt = TTY::Prompt.new
         @start_prompt.select("What do you want to do now?") do |menu|
-            menu.choice "Show my notes", -> {Noteboard.display_noteboard(noteboard)}
+            menu.choice "Load existing noteboards", -> {noteboard_menu}
             menu.choice "Add new note", -> {Noteboard.noteboard_add(add_note)}
-            menu.choice "Delete note", -> {Noteboard.noteboard_delete(delete_note)}
+            menu.choice "Delete/edit note", -> {Noteboard.noteboard_edit(edit_note)}
             menu.choice "Back", -> {StartMenu.new}
         end
 end
 
-#control flow
-# noteboard = Noteboard.new(new_noteboard)
+# control flow
+
 # noteboard.noteboard_add(add_note)
-# noteboard.display_noteboard(file)
+# Noteboard.display_noteboard(noteboard)
 # options_menu(noteboard)
 
 
