@@ -1,9 +1,7 @@
 # Terminal Notes
 
-  
 
 ## Statement of Purpose and Scope
-
 
 This terminal application allows the user to create and organise short notes in a offline terminal environment. It will save data onto the user's pc for ease of access and privacy.
 
@@ -51,6 +49,9 @@ The user experience outline after loading up the app will be :
 
   
 ## Implementation plan
+![Plan](./docs/plan.JPG)
+
+![Plan2](./docs/plan2.JPG)
 
 ![Trello](./docs/Trello.JPG)
 
